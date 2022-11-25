@@ -2,7 +2,7 @@
 
 This is a Keras implementation of a loss function for ordinal datasets, based on the built-in categorical crossentropy loss.
 
-The assumption is that the relationship between any two consecutive categories is uniform, for example, `{[1, 0, 0, 0], [0, 0, 1, 0]}` will be penalised to the same extent as `{[0, 1, 0, 0], [0, 0, 0, 1]}`, where `{x, y}` are the `(true, prediction)` pairs.
+The assumption is that the relationship between any two consecutive categories is uniform, for example, `{[1, 0, 0, 0], [0, 0, 1, 0]}` will be penalised to the same extent as `{[0, 1, 0, 0], [0, 0, 0, 1]}`, where `{y, ŷ}` are the `(true, prediction)` pairs.
 
 ## Mathmatical Formulation
 
