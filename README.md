@@ -4,16 +4,16 @@ This is a Keras implementation of a loss function for ordinal datasets, based on
 
 The assumption is that the relationship between any two consecutive categories is uniform, for example, `{[1, 0, 0, 0], [0, 0, 1, 0]}` will be penalised to the same extent as `{[0, 1, 0, 0], [0, 0, 0, 1]}`, where `{y, ŷ}` are the `(true, prediction)` pairs.
 
-## Mathmatical Formulation
+## Mathematical Formulation
 
 The loss function is given by:
 
-$$ loss \left( \boldsymbol{y}, \hat{\boldsymbol{y}} \right) = \left( w + 1 \right) \operatorname{CE} \left( \boldsymbol{y}, \hat{\boldsymbol{y}} \right), \quad w \left( \boldsymbol{y}, \hat{\boldsymbol{y}} \right) = \frac{ \left\| \arg \max_{i} \boldsymbol{y} - \arg \max_{i} \hat{\boldsymbol{y}} \right| }{K - 1} $$
+$$ loss \left( \boldsymbol{y}, \hat{\boldsymbol{y}} \right) = \left( w + 1 \right) \operatorname{CE} \left( \boldsymbol{y}, \hat{\boldsymbol{y}} \right), \quad w \left( \boldsymbol{y}, \hat{\boldsymbol{y}} \right) = \frac{ \left| \arg \max_{i} \boldsymbol{y} - \arg \max_{i} \hat{\boldsymbol{y}} \right| }{K - 1} $$
 
 Where:
  * $K$ - The number of classes (2 for Binary Classification).
- * $\boldsymbol{y}$ - A vector in $\mathbb{R}^{K}$ which is the ground truth probabilitues per class.
- * $\hat{\boldsymbol{y}}$ - A vector in $\mathbb{R}^{K}$ which is the estimation of probabilitues per class of the classifier.
+ * $\boldsymbol{y}$ - A vector in $\mathbb{R}^{K}$ which is the ground truth probabilities per class.
+ * $\hat{\boldsymbol{y}}$ - A vector in $\mathbb{R}^{K}$ which is the estimation of probabilities per class of the classifier.
  * $\operatorname{CE} \left( \cdot, \cdot \right)$ - The [Cross Entropy](https://en.wikipedia.org/wiki/Cross_entropy) loss function.
  * $\arg \max_{i} \hat{\boldsymbol{y}}$ - Extracts the index of the class with the highest probability. Basically the class represented by the vector.
  
